@@ -19,7 +19,9 @@
 
 ARG RUBY_VERSION=2.6.3
 ARG VARIANT=jemalloc-slim
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
+# FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
+FROM quay.io/evl.ms/fullstaq-ruby:2.7.7-jemalloc-slim as base
+
 
 LABEL fly_launch_runtime="rails"
 
