@@ -1,5 +1,4 @@
-<div id="page-content">
-  <h1 class="text-center mt-4">Articles Listing Page</h1>
+<h1 class="text-center mt-4">Articles Listing Page</h1>
 
   <div class="container">
     <% @articles.each do |article| %>
@@ -26,7 +25,6 @@
     </div>
   <% end %>
   </div>
-</div>
 <p>
   <%= link_to 'Create new Article', new_article_path  %>
 </p>
