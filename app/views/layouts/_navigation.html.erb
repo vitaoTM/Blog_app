@@ -21,19 +21,29 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Articles</a>
           <ul class="dropdown-menu">
-            <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
+            <% if logged_in? %>
+              <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
+            <% end %>
             <li><hr class="dropdown-divider"></li>
             <%= link_to "View articles", articles_path, class: "dropdown-item" %>
           </ul>
         </li>
 
         <% if logged_in? %>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">profile [<%= current_user.username %>]</a>
+            <ul class="dropdown-menu">
+              <%= link_to "View your Profile", user_path(current_user), class: "dropdown-item" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <%= link_to 'Log out', logout_path, class: "nav-link", method: :delete %>
-          </li>
-          <li class="nav-item">
-            <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
-          </li>
+          </ul>
+        </li>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Log In', login_path, class: "nav-link" %>
