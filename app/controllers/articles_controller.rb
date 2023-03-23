@@ -58,5 +58,6 @@ class ArticlesController < ApplicationController
       flash[:alert] = "You can only modify your own article"
       redirect_to @article
     end
+  end
 
 end

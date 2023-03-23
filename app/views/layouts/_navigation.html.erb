@@ -32,11 +32,12 @@
         <% if logged_in? %>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">profile [<%= current_user.username %>]</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Profile [<%= current_user.username %>]</a>
             <ul class="dropdown-menu">
               <%= link_to "View your Profile", user_path(current_user), class: "dropdown-item" %>
-              <li><hr class="dropdown-divider"></li>
               <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure you want to delete your account?!?" } %>
             </ul>
           </li>
 
