@@ -30,7 +30,9 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.paginate(page: params[:page], per_page: 5)
+    @show_search = true
+    category_name = params['search']
+    @categories = Category.where("name ilike ?", "%#{category_name}%" ).paginate(page: params[:page], per_page: 5)
   end
 
   def show

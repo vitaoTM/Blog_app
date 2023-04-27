@@ -7,7 +7,9 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 5)
+    @show_search = true
+    title_or_description = params['search']
+    @articles = Article.where("title ilike ? or description ilike ?", "%#{title_or_description}%", "%#{title_or_description}%").paginate(page: params[:page], per_page: 5)
   end
 
   def new
