@@ -8,8 +8,8 @@ class ArticlesController < ApplicationController
 
   def index
     @show_search = true
-    title_or_description = params['search']
-    @articles = Article.where("title ilike ? or description ilike ?", "%#{title_or_description}%", "%#{title_or_description}%").paginate(page: params[:page], per_page: 5)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result.paginate(page: params[:page], per_page: 5)
   end
 
   def new

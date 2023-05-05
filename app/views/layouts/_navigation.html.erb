@@ -70,11 +70,8 @@
           </li>
         <% end %>
       </ul>
-      <% if  @show_search # action_name == "index" && ['categories', 'articles'].include?(controller_name) %>
-        <form class="d-flex" action="/<%= controller_name %>" method="get" role="search">
-          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      <% if @show_search # action_name == "index" && ['categories', 'articles'].include?(controller_name) %>
+        <%= yield(:search_bar) %>
       <% end %>
     </div>
   </div>
